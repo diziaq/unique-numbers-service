@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>sn.sandbox</groupId>
+  <artifactId>unique-numbers-service</artifactId>
+  <version>0.0.1</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>mediator</module>
+  </modules>
+
+  <properties>
+    <version.java>11</version.java>
+    <version.spring.boot>2.3.0.RELEASE</version.spring.boot>
+
+    <version.plugin.maven.compiler>3.8.1</version.plugin.maven.compiler>
+    <version.plugin.maven.resources>3.1.0</version.plugin.maven.resources>
+
+    <encoding.source.code>UTF-8</encoding.source.code>
+    <encoding.resources>UTF-8</encoding.resources>
+
+    <result.main.class.name>define-when-needed</result.main.class.name>
+  </properties>
+
+  <build>
+    <finalName>${project.name}</finalName>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>${version.plugin.maven.compiler}</version>
+        <configuration>
+          <encoding>${encoding.source.code}</encoding>
+          <compilerVersion>${version.java}</compilerVersion>
+          <release>${version.java}</release>
+          <source>${version.java}</source>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>${version.plugin.maven.resources}</version>
+        <configuration>
+          <encoding>${encoding.resources}</encoding>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${version.spring.boot}</version>
+        <configuration>
+          <jvmArguments>${spring.boot.jvm.arguments}</jvmArguments>
+          <mainClass>${result.main.class.name}</mainClass>
+          <layout>ZIP</layout>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
